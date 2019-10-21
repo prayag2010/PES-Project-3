@@ -58,9 +58,7 @@ EXE_PC := \
 OBJS_FRDM := \
   ./debug_frdm/main.o \
   ./debug_frdm/CMSIS/startup_MKL25Z4.o \
-  ./debug_frdm/CMSIS/system_MKL25Z4.o \
-  ./debug_frdm/setLed_frdm.o \
-  ./debug_frdm/Touch_Sensor.o
+  ./debug_frdm/CMSIS/system_MKL25Z4.o
 
 # List of user object files for the KL25Z
 USER_OBJS_FRDM := \
@@ -78,13 +76,21 @@ USER_OBJS_FRDM := \
 	./debug_frdm/drivers/fsl_tsi_v4.o \
 	./debug_frdm/drivers/fsl_uart.o \
 	./debug_frdm/utilities/fsl_debug_console.o \
-	./debug_frdm/printTimeStamp.o \
-	./debug_frdm/rtcInit.o
+	./debug_frdm/frdm_includes/allocate_words.o \
+	./debug_frdm/frdm_includes/display_memory.o \
+	./debug_frdm/frdm_includes/free_words.o \
+	./debug_frdm/frdm_includes/gen_pattern.o \
+	./debug_frdm/frdm_includes/invert_block.o \
+	./debug_frdm/frdm_includes/malloc.o \
+	./debug_frdm/frdm_includes/verify_pattern.o \
+	./debug_frdm/frdm_includes/write_memory.o \
+	./debug_frdm/frdm_includes/write_pattern.o \
+	./debug_frdm/frdm_includes/get_address.o
+	
  
 # List of object files for the PC  
 OBJS_PC := \
-  	./debug_pc/main.o \
-  	./debug_pc/utilities_pc.o
+  	./debug_pc/main.o
 
 ###################################################
 # List of dependency files for KL25Z
@@ -101,9 +107,8 @@ C_DEPS_PC = \
 
 # List of source files for PC
 C_SRC_PC = \
- ./source_common/main.c \
- ../pc_includes/utilities_pc.c
- 
+ ./source_common/main.c 
+  
 ###################################################
 
 #List of macros to be included for different targets
@@ -214,9 +219,9 @@ pc_release : $(OBJS_PC)
 ifeq ($(MAKECMDGOALS),frdm_debug)
 	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 endif
-ifeq ($(MAKECMDGOALS),frdm_release)
-	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
-endif
+#ifeq ($(MAKECMDGOALS),frdm_release)
+#	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+#endif
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -231,18 +236,18 @@ ifeq ($(MAKECMDGOALS),pc_release)
 endif
 	@echo 'Finished building: $<'
 	@echo ' '
-
-#	Rule to build the files in the includes folder for PC
-./debug_pc/%.o: ./pc_includes/%.c 
-	@echo 'Building file: $<'
-ifeq ($(MAKECMDGOALS),pc_debug)
-	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
-endif
-ifeq ($(MAKECMDGOALS),pc_release)
-	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
-endif
-	@echo 'Finished building: $<'
-	@echo ' '
+#
+##	Rule to build the files in the includes folder for PC
+#./debug_pc/%.o: ./pc_includes/%.c 
+#	@echo 'Building file: $<'
+#ifeq ($(MAKECMDGOALS),pc_debug)
+#	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
+#endif
+#ifeq ($(MAKECMDGOALS),pc_release)
+#	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
+#endif
+#	@echo 'Finished building: $<'
+#	@echo ' '
 
 
 ###################################################
@@ -270,6 +275,13 @@ endif
 
 # Rule to build the files in the drivers folder
 ./debug_frdm/drivers/%.o: ./drivers/%.c
+	@echo 'Building file: $<'
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+	
+# Rule to build the files in the drivers folder
+./debug_frdm/frdm_includes/%.o: ./frdm_includes/%.c
 	@echo 'Building file: $<'
 	$(CC_FRDM) $(CC_OPTIONS_FRDM) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
