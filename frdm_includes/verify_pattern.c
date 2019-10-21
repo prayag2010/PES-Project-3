@@ -9,15 +9,15 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 	//CHECK DATA TYPES
 	uint8_t *temp = gen_pattern(input, length, seed);
 
-	for(int i = 0; i < length; i++){
-		printf("%lu ",temp[i]);
-	}
-	printf("\n");
+//	for(int i = 0; i < length; i++){
+//		printf("%lu ",temp[i]);
+//	}
+//	printf("\n");
 
-	for(int i = 0; i < length; i++){
-		printf("%lu ",loc[i]);
-	}
-	printf("\n");
+//	for(int i = 0; i < length; i++){
+//		printf("%lu ",loc[i]);
+//	}
+//	printf("\n");
 
 	for (int i = 0; i < length; i++)
 	{
