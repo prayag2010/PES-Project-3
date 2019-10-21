@@ -2,6 +2,7 @@
 #include "MemoryTest.h"
 #include "MyMalloc.h"
 
+//FIX
 //enum mem_statusop mem_status;
 
 uint32_t * allocate_words(size_t length)
