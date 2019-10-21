@@ -86,6 +86,7 @@ USER_OBJS_FRDM := \
 	./debug_frdm/frdm_includes/write_memory.o \
 	./debug_frdm/frdm_includes/write_pattern.o \
 	./debug_frdm/frdm_includes/get_address.o \
+	./debug_frdm/frdm_includes/ledControl.o \
 	./debug_frdm/frdm_includes/loggerFunctions.o
 	
  

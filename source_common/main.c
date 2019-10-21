@@ -3,7 +3,7 @@
 #include "../frdm_includes/MyMalloc.h"
 #include "../frdm_includes/MemoryTest.h"
 #include "../frdm_includes/loggerFunctions.h"
-
+#include "../frdm_includes/ledControl.h"
 enum mem_status;
 //struct block *freeList=(void*)memory;
 
@@ -16,9 +16,11 @@ uint8_t writeVal = 0xFFEE;
 int main()
 {
 
-
+	init_pins();
 	log_enable();
+	offLED();
 	//FIX THIS FUNCTION, return null if not allocated
+	setBlue();
 	uint32_t *myBlock = allocate_words(myBlockSize);
 	printf("Address of myblock %p\n",myBlock);
 
@@ -60,8 +62,8 @@ int main()
 	log_data(temp, 16);
 
 
-	offsetAddr = get_address(myBlock, offsetAddr);
-	if( invert_block(offsetAddr, sizeof(offsetAddr))) //?
+	offsetAddr = get_address(myBlock, blockOffset);
+	if( invert_block(offsetAddr, sizeof(blockOffset))) //?
 	{
 
 	}
@@ -75,8 +77,8 @@ int main()
 	log_data(temp, myBlockSize);
 
 
-	offsetAddr = get_address(myBlock, offsetAddr);
-	if( invert_block(offsetAddr, sizeof(offsetAddr)))
+	offsetAddr = get_address(myBlock, blockOffset);
+	if( invert_block(offsetAddr, sizeof(blockOffset)))
 	{
 
 	}
@@ -88,7 +90,8 @@ int main()
 	log_string("Verify and display");
 //	printf("Verify and display\n");
 	log_data(temp, myBlockSize);
-
+	offLED();
+	setGreen();
 	return 0;
 
 }
