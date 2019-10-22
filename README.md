@@ -76,7 +76,7 @@ Tried to implement a custom malloc function for the FRDM board, but we could not
 Also, while making the code modular we ran into the issue of multiple definitions of functions and variables and we resolved that by using extern keyword and creating a common header file.  
 
 **References**  
-http://tharikasblogs.blogspot.com/p/how-to-write-your-own-malloc-and-free.html- the custom malloc functions were taken from this website     
+http://tharikasblogs.blogspot.com/p/how-to-write-your-own-malloc-and-free.html - the custom malloc functions were taken from this website     
 https://mcuoneclipse.com/2018/08/26/tutorial-%CE%BCcunit-a-unit-test-framework-for-microcontrollers/ - the reference and tutorial for the uCUnit testing framework
 
 
