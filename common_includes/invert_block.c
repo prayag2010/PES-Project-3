@@ -2,16 +2,16 @@
 
 mem_status invert_block(uint32_t * loc, size_t length)
 {
-	for ( int i = 0; i < length; i++)
+	for ( int i = 0; i < length; i++)			//Loop length number of times
 	{
-		*loc = *loc ^ (0x000000FF << (i * 8));
+		*loc = *loc ^ (0x000000FF << (i * 8));	//Invert a block by XORing 8 bits with FF and shifting left one byte at a time
 	}
-	if (loc == NULL)
+	if (loc == NULL)							//if the passed location is NULL return error
 	{
-		offLED();
-		setRed();
-		return FAILED;
+		offLED();								//Switch of all LEDs
+		setRed();								//Set Red LED on
+		return FAILED;							//Return FAILED enum status
 	}
 	else
-		return SUCCESS;
+		return SUCCESS;						    //Retun SUCCESS enum ststaus in the case of no errors
 }

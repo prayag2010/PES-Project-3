@@ -31,8 +31,6 @@ typedef enum mem_statusop
 	WARNING
 }mem_status;
 
-// mem_statusop mem_status;
-
 /*
  * @brief Allocate a block of memory for the test
  * 
@@ -55,18 +53,83 @@ uint32_t * allocate_words(size_t length);
  */
 void free_words(uint32_t * src);
 
+/*
+ * @brief Displays a block of memory for the test
+ * 
+ * This function displays the bytes stored at
+ * the address specified in the argument
+ * 
+ * @parameter  address of the memory block, length of bytes
+ * @return uint8_t*
+ */
 uint8_t * display_memory(uint32_t * loc, size_t length);
 
+/*
+ * @brief Writes to a block of memory for the test
+ * 
+ * This function writes a value at
+ * the address specified in the argument
+ * 
+ * @parameter  address of the memory block, value to be returned
+ * @return uint8_t*
+ */
 mem_status write_memory(uint32_t * loc, uint8_t value);
 
+/*
+ * @brief Inverts bytes at a block of memory for the test
+ * 
+ * This function inverts a specified number of bytes stored at
+ * the address specified in the argument
+ * 
+ * @parameter  address of the memory block, length of bytes
+ * @return mem_status
+ */
 mem_status invert_block(uint32_t * loc, size_t length);
 
+/*
+ * @brief Writes a pattern to a block of memory for the test
+ * 
+ * This function writes a pattern at
+ * the address specified in the argument
+ * 
+ * @parameter  address of the memory block, length, seed value
+ * @return mem_status
+ */
 mem_status write_pattern(uint32_t * loc, size_t length, int8_t seed);
 
+/*
+ * @brief Verifies a pattern at a block of memory for the test
+ * 
+ * This function verifies a pattern at
+ * the address specified in the argument and returns a list
+ * of locations where the patterns don't match
+ *
+ * @parameter  address of the memory block, length, seed value
+ * @return uint32_t*
+ */
 uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed);
 
+/*
+ * @brief Verifies a pattern at a block of memory for the test
+ * 
+ * This function generates an offset address based on
+ * the base address specified in the argument and the offset 
+ * value
+ *
+ * @parameter  address of the memory block, offset value
+ * @return uint32_t*
+ */
 uint32_t *get_address(uint32_t * base_addr, uint32_t offset);
 
+/*
+ * @brief Generates a deterministic pattern of 8 bytes
+ * 
+ * This function generates a pattern using
+ * the Linear Congruential Generator algorithm
+ * 
+ * @parameter  Byte array to store the pattern, length, seed value
+ * @return void
+ */
 void gen_pattern(uint8_t* pattern, uint8_t length, uint8_t seed);
 
 #endif

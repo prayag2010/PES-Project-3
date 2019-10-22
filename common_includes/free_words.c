@@ -3,20 +3,19 @@
 
 void free_words(uint32_t* src)
 {
-	if (src == NULL)
+	if (src == NULL)		   				//Check if the passed pointer is NULL
 	{
-		//mem_status = WARNING;
-		offLED();
-		setRed();
-		return;
+		offLED();							//Turn of all LEDs
+		setRed();							//Set Red LED on to indicate error
+		return;								
 	}
 	else
 	{
-#if defined frdm_debug || frdm_release
-		free(src);
-#endif
-#if defined pc_debug || pc_release
-		MyFree(src);
-#endif
+	#if defined frdm_debug || frdm_release  //Use inbuilt free() for KL25Z
+			free(src);
+	#endif
+	#if defined pc_debug || pc_release		//Use custom Myfree() for PC
+			MyFree(src);
+	#endif
 	}
 }
