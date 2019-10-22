@@ -1,3 +1,16 @@
+/*
+ * @file write_pattern.c
+ * @brief Source file that writes a pattern at an address
+ *
+ * This source file takes an address, a length and a seed, and writes a
+ * pattern at that address
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
+
 #include "MemoryTest.h"
 #include "MyMalloc.h"
 #include "loggerFunctions.h"

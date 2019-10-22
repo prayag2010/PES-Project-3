@@ -1,3 +1,15 @@
+/*
+ * @file get_address,c
+ * @brief Source file that returns an offset of a given address
+ *
+ * This source file takes an address and an integer as an offset,
+ * and returns a new offset address
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 #include "MemoryTest.h"
 #include "MyMalloc.h"
 

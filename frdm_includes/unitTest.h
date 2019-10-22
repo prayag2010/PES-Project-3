@@ -1,8 +1,13 @@
 /*
- * unitTest.h
+ * @file unitTest.h
+ * @brief Header file has all the unit tests
  *
- *  Created on: 22-Oct-2019
- *      Author: prayag
+ * This header file contains function prototypes the unit tests called,
+ * which are defined in the uCUnit.h header
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
  */
 
 #ifndef FRDM_INCLUDES_UNITTEST_H_

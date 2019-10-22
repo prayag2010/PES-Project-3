@@ -1,3 +1,15 @@
+/*
+ * @file free_words.c
+ * @brief Source file that frees allocated memory
+ *
+ * This source file uses the free function for the KL25Z and
+ * a custom MyFree functions for the PC to free allocated memory
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 #include "MemoryTest.h"
 #include "MyMalloc.h"
 

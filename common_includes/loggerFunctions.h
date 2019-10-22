@@ -1,10 +1,15 @@
 /*
- * loggerFunctions.h
+ * @file loggerFunctions.h
+ * @brief Header file that contains the logger print functions
  *
- *  Created on: Oct 20, 2019
- *      Author: rahul
+ * This header file has the function prototypes for the
+ * logger print functions, which can print strings, integers
+ * and data at memory locations
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
  */
-
 #ifndef LOGGERFUNCTIONS_H_
 #define LOGGERFUNCTIONS_H_
 

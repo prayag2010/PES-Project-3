@@ -1,3 +1,15 @@
+/*
+ * @file allocate_words.c
+ * @brief The source file that contains the memory allocation functions
+ *
+ * This source file has the custom memory allocation function for the PC and the
+ * allocation function for the KL25Z
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 
 #include "MemoryTest.h"
 #include "MyMalloc.h"

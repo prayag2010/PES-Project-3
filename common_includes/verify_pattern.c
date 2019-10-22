@@ -1,3 +1,18 @@
+/*
+ * @file verify_pattern.c
+ * @brief Source file that verifies an input pattern
+ *
+ * This source file takes an address, length, and seed as an input
+ * and verifies the pattern. Returns an array which has the addresses of
+ * values that are different
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
+
+
 #include "MemoryTest.h"
 #include "MyMalloc.h"
 #include "loggerFunctions.h"

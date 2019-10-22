@@ -1,3 +1,15 @@
+/*
+ * @file invert_block.c
+ * @brief Source file that inverts the bits at a given address
+ *
+ * This source file takes the location and length of data as an input,
+ * and inverts them according to the length
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 #include "MemoryTest.h"
 
 mem_status invert_block(uint32_t * loc, size_t length)

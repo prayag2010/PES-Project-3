@@ -1,3 +1,15 @@
+/*
+ * @file write_memory.c
+ * @brief Source file that writes a value to a memory location
+ *
+ * This source file takes an address and an integer as in input, and
+ * writes the integer at that address
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 #include "MemoryTest.h"
 
 mem_status write_memory(uint32_t * loc, uint8_t value)

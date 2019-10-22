@@ -710,7 +710,7 @@ Discarded input sections
  .debug_aranges
                 0x0000000000000000       0x20 ./debug_frdm/frdm_includes/display_memory.o
  .debug_ranges  0x0000000000000000       0x10 ./debug_frdm/frdm_includes/display_memory.o
- .debug_line    0x0000000000000000      0x3ad ./debug_frdm/frdm_includes/display_memory.o
+ .debug_line    0x0000000000000000      0x3af ./debug_frdm/frdm_includes/display_memory.o
  .debug_str     0x0000000000000000      0x96c ./debug_frdm/frdm_includes/display_memory.o
  .comment       0x0000000000000000       0x76 ./debug_frdm/frdm_includes/display_memory.o
  .debug_frame   0x0000000000000000       0x30 ./debug_frdm/frdm_includes/display_memory.o
@@ -743,7 +743,7 @@ Discarded input sections
  .debug_aranges
                 0x0000000000000000       0x40 ./debug_frdm/frdm_includes/malloc.o
  .debug_ranges  0x0000000000000000       0x30 ./debug_frdm/frdm_includes/malloc.o
- .debug_line    0x0000000000000000      0x373 ./debug_frdm/frdm_includes/malloc.o
+ .debug_line    0x0000000000000000      0x375 ./debug_frdm/frdm_includes/malloc.o
  .debug_str     0x0000000000000000      0x60b ./debug_frdm/frdm_includes/malloc.o
  .comment       0x0000000000000000       0x76 ./debug_frdm/frdm_includes/malloc.o
  .debug_frame   0x0000000000000000       0xac ./debug_frdm/frdm_includes/malloc.o
@@ -1835,31 +1835,31 @@ OUTPUT(./debug_frdm/outputFRDM.axf elf32-littlearm)
  .debug_ranges  0x00000000000007c8       0x10 ./debug_frdm/frdm_includes/unitTest.o
  .debug_ranges  0x00000000000007d8       0x40 ./debug_frdm/System.o
 
-.debug_line     0x0000000000000000     0x7da3
- .debug_line    0x0000000000000000      0x47d ./debug_frdm/main.o
- .debug_line    0x000000000000047d      0x244 ./debug_frdm/CMSIS/startup_MKL25Z4.o
- .debug_line    0x00000000000006c1      0x2cd ./debug_frdm/CMSIS/system_MKL25Z4.o
- .debug_line    0x000000000000098e      0x2c1 ./debug_frdm/board/board.o
- .debug_line    0x0000000000000c4f      0x3e1 ./debug_frdm/board/clock_config.o
- .debug_line    0x0000000000001030       0x48 ./debug_frdm/board/peripherals.o
- .debug_line    0x0000000000001078      0x30f ./debug_frdm/board/pin_mux.o
- .debug_line    0x0000000000001387     0x12e5 ./debug_frdm/drivers/fsl_clock.o
- .debug_line    0x000000000000266c      0x402 ./debug_frdm/drivers/fsl_common.o
- .debug_line    0x0000000000002a6e      0xd69 ./debug_frdm/drivers/fsl_lpsci.o
- .debug_line    0x00000000000037d7      0xd57 ./debug_frdm/drivers/fsl_uart.o
- .debug_line    0x000000000000452e      0xd1f ./debug_frdm/utilities/fsl_debug_console.o
- .debug_line    0x000000000000524d      0x3b3 ./debug_frdm/frdm_includes/allocate_words.o
- .debug_line    0x0000000000005600      0x396 ./debug_frdm/frdm_includes/free_words.o
- .debug_line    0x0000000000005996      0x31f ./debug_frdm/frdm_includes/gen_pattern.o
- .debug_line    0x0000000000005cb5      0x338 ./debug_frdm/frdm_includes/invert_block.o
- .debug_line    0x0000000000005fed      0x401 ./debug_frdm/frdm_includes/verify_pattern.o
- .debug_line    0x00000000000063ee      0x308 ./debug_frdm/frdm_includes/write_memory.o
- .debug_line    0x00000000000066f6      0x405 ./debug_frdm/frdm_includes/write_pattern.o
- .debug_line    0x0000000000006afb      0x392 ./debug_frdm/frdm_includes/get_address.o
- .debug_line    0x0000000000006e8d      0x39d ./debug_frdm/frdm_includes/ledControl.o
- .debug_line    0x000000000000722a      0x3a5 ./debug_frdm/frdm_includes/loggerFunctions.o
- .debug_line    0x00000000000075cf      0x42d ./debug_frdm/frdm_includes/unitTest.o
- .debug_line    0x00000000000079fc      0x3a7 ./debug_frdm/System.o
+.debug_line     0x0000000000000000     0x7db4
+ .debug_line    0x0000000000000000      0x47e ./debug_frdm/main.o
+ .debug_line    0x000000000000047e      0x244 ./debug_frdm/CMSIS/startup_MKL25Z4.o
+ .debug_line    0x00000000000006c2      0x2cd ./debug_frdm/CMSIS/system_MKL25Z4.o
+ .debug_line    0x000000000000098f      0x2c1 ./debug_frdm/board/board.o
+ .debug_line    0x0000000000000c50      0x3e1 ./debug_frdm/board/clock_config.o
+ .debug_line    0x0000000000001031       0x48 ./debug_frdm/board/peripherals.o
+ .debug_line    0x0000000000001079      0x30f ./debug_frdm/board/pin_mux.o
+ .debug_line    0x0000000000001388     0x12e5 ./debug_frdm/drivers/fsl_clock.o
+ .debug_line    0x000000000000266d      0x402 ./debug_frdm/drivers/fsl_common.o
+ .debug_line    0x0000000000002a6f      0xd69 ./debug_frdm/drivers/fsl_lpsci.o
+ .debug_line    0x00000000000037d8      0xd57 ./debug_frdm/drivers/fsl_uart.o
+ .debug_line    0x000000000000452f      0xd1f ./debug_frdm/utilities/fsl_debug_console.o
+ .debug_line    0x000000000000524e      0x3b5 ./debug_frdm/frdm_includes/allocate_words.o
+ .debug_line    0x0000000000005603      0x398 ./debug_frdm/frdm_includes/free_words.o
+ .debug_line    0x000000000000599b      0x321 ./debug_frdm/frdm_includes/gen_pattern.o
+ .debug_line    0x0000000000005cbc      0x33a ./debug_frdm/frdm_includes/invert_block.o
+ .debug_line    0x0000000000005ff6      0x403 ./debug_frdm/frdm_includes/verify_pattern.o
+ .debug_line    0x00000000000063f9      0x30a ./debug_frdm/frdm_includes/write_memory.o
+ .debug_line    0x0000000000006703      0x407 ./debug_frdm/frdm_includes/write_pattern.o
+ .debug_line    0x0000000000006b0a      0x394 ./debug_frdm/frdm_includes/get_address.o
+ .debug_line    0x0000000000006e9e      0x39d ./debug_frdm/frdm_includes/ledControl.o
+ .debug_line    0x000000000000723b      0x3a5 ./debug_frdm/frdm_includes/loggerFunctions.o
+ .debug_line    0x00000000000075e0      0x42d ./debug_frdm/frdm_includes/unitTest.o
+ .debug_line    0x0000000000007a0d      0x3a7 ./debug_frdm/System.o
 
 .debug_str      0x0000000000000000     0x4387
  .debug_str     0x0000000000000000      0xe8b ./debug_frdm/main.o

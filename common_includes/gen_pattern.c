@@ -1,3 +1,14 @@
+/*
+ * @file gen_pattern.c
+ * @brief Source file that generates a pattern
+ *
+ * This source file stores a generated pattern in the input array pattern
+ *
+ * @authors Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 #include "MemoryTest.h"
 
 void gen_pattern(uint8_t* pattern, uint8_t length, uint8_t seed)

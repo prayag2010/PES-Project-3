@@ -1,3 +1,18 @@
+/*
+ * @file malloc.c
+ * @brief Source file that contains the custom allocation functions
+ *
+ * This source file has the custom allocation and deloc functions used for the PC
+ *
+ *
+ * Reference:
+ * http://tharikasblogs.blogspot.com/p/how-to-write-your-own-malloc-and-free.html
+ *
+ * @authors tharikasblogs, Rahul Ramaprasad, Prayag Milan Desai
+ * @date October 20 2019
+ * @verison 1.0
+ */
+
 #include<stdio.h>
 #include<stddef.h>
 #include<stdlib.h>
