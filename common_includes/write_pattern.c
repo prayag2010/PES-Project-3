@@ -4,11 +4,11 @@
 
 mem_status write_pattern(uint32_t * loc, size_t length, int8_t seed)
 {
-#ifdef frdm_debug
+#if defined frdm_debug || frdm_release
 	uint8_t* input= (uint8_t*)malloc(length * sizeof(uint8_t));
 #endif
 
-#ifdef pc_debug
+#if defined pc_debug || pc_release
 	uint8_t* input= (uint8_t*)MyMalloc(length * sizeof(uint8_t));
 #endif
 
@@ -19,16 +19,16 @@ mem_status write_pattern(uint32_t * loc, size_t length, int8_t seed)
 		log_string("Memory allocation failed\n");
 	}
 
-	uint8_t *temp = gen_pattern(input, length, seed);
+	gen_pattern(input, length, seed);
 
-	if( temp == NULL)
+	if( input == NULL)
 	{
 		offLED();
 		setRed();
 		log_string("Memory allocation failed\n");
 	}
 	for (int i = 0; i < length; i++)
-		loc[i] = temp[i];//(*loc & 0xFFFFFF00) | *temp++;
+		loc[i] = input[i];//(*loc & 0xFFFFFF00) | *temp++;
 	if (loc != NULL)
 		return SUCCESS;
 	else

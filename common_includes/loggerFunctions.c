@@ -27,7 +27,7 @@ bool log_status(void)
 
 void log_data(uint32_t *inAddress, size_t length)
 {
-	if(loggerEnable){
+	if(log_status()){
 		printf("%p: ", inAddress);
 		for(size_t i = 0; i < length; i++){
 			printf("%d ",*(inAddress + i));
@@ -38,12 +38,12 @@ void log_data(uint32_t *inAddress, size_t length)
 
 void log_string(char *inString)
 {
-	if(log_status)
+	if(log_status())
 		printf("%s\n", inString);
 }
 
 void log_integer(int *inAddress)
 {
-	if(loggerEnable)
+	if(log_status())
 		printf("%d\n", *inAddress);
 }

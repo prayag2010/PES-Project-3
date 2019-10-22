@@ -87,7 +87,9 @@ USER_OBJS_FRDM := \
 	./debug_frdm/frdm_includes/write_pattern.o \
 	./debug_frdm/frdm_includes/get_address.o \
 	./debug_frdm/frdm_includes/ledControl.o \
-	./debug_frdm/frdm_includes/loggerFunctions.o
+	./debug_frdm/frdm_includes/loggerFunctions.o \
+	./debug_frdm/frdm_includes/unitTest.o \
+	./debug_frdm/System.o
 	
  
 # List of object files for the PC  
@@ -187,7 +189,7 @@ LL_PC_OPTIONS := -Wall -Werror -o $(EXE_PC)
 all: $(EXE_FRDM) $(EXE_PC)
 	@echo "*** finished building ***"
 	
-# Doesn't give in error while biulding all
+# Doesn't give in error while building all
 .PHONY: phony
 $(EXE_PC): phony
 
@@ -237,11 +239,11 @@ pc_debug : $(OBJS_PC)
 ./debug_frdm/%.o: ./source_common/%.c 
 	@echo 'Building file: $<'
 ifeq ($(MAKECMDGOALS),frdm_debug)
-	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 endif
-#ifeq ($(MAKECMDGOALS),frdm_release)
-#	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
-#endif
+ifeq ($(MAKECMDGOALS),frdm_release)
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+endif
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -251,6 +253,9 @@ endif
 ifeq ($(MAKECMDGOALS),pc_debug)
 	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
 endif
+ifeq ($(MAKECMDGOALS),pc_release)
+	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
+endif
 	@echo 'Finished building: $<'
 	@echo ' '
 #
@@ -259,6 +264,9 @@ endif
 	@echo 'Building file: $<'
 ifeq ($(MAKECMDGOALS),pc_debug)
 	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
+endif
+ifeq ($(MAKECMDGOALS),pc_release)
+	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
 endif
 	@echo 'Finished building: $<'
 	@echo ' '
@@ -304,7 +312,21 @@ endif
 ./debug_frdm/%.o: ./frdm_includes/%.c
 	@echo 'Building file: $<'
 ifeq ($(MAKECMDGOALS),frdm_debug)
-	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+endif
+ifeq ($(MAKECMDGOALS),frdm_release)
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+endif
+	@echo 'Finished building: $<'
+	@echo ' ' 
+	
+./debug_frdm/%.o: ./uCUnit/%.c
+	@echo 'Building file: $<'
+ifeq ($(MAKECMDGOALS),frdm_debug)
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+endif
+ifeq ($(MAKECMDGOALS),frdm_release)
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 endif
 	@echo 'Finished building: $<'
 	@echo ' ' 
@@ -312,7 +334,10 @@ endif
 ./debug_frdm/frdm_includes/%.o: ./common_includes/%.c
 	@echo 'Building file: $<'
 ifeq ($(MAKECMDGOALS),frdm_debug)
-	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+endif
+ifeq ($(MAKECMDGOALS),frdm_release)
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 endif
 	@echo 'Finished building: $<'
 	@echo ' ' 
@@ -321,6 +346,9 @@ endif
 	@echo 'Building file: $<'
 ifeq ($(MAKECMDGOALS),pc_debug)
 	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
+endif
+ifeq ($(MAKECMDGOALS),pc_release)
+	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
 endif
 	@echo 'Finished building: $<'
 	@echo ' '

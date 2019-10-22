@@ -12,6 +12,11 @@ void free_words(uint32_t* src)
 	}
 	else
 	{
+#if defined frdm_debug || frdm_release
+		free(src);
+#endif
+#if defined pc_debug || pc_release
 		MyFree(src);
+#endif
 	}
 }

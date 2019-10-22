@@ -12,11 +12,11 @@ uint32_t * allocate_words(size_t length)
 //		//mem_status = FAILED;
 //		return NULL;
 //	}
-#ifdef frdm_debug
+#if defined frdm_debug || frdm_release
 	uint32_t *temp = malloc(length * sizeof(size_t));
 #endif
 
-#ifdef pc_debug
+#if defined pc_debug || pc_release
 	uint32_t *temp = MyMalloc(length * sizeof(size_t));
 #endif
 
@@ -25,6 +25,7 @@ uint32_t * allocate_words(size_t length)
 		offLED();
 		setRed();
 		log_string("Memory allocation failed\n");
+		return NULL;
 	}
 	else
 		return (temp);

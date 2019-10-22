@@ -4,11 +4,11 @@
 
 uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 {
-#ifdef frdm_debug
+#if defined frdm_debug || frdm_release
 	uint32_t *list = malloc(length * sizeof(size_t));
 #endif
 
-#ifdef pc_debug
+#if defined pc_debug || pc_release
 	uint32_t *list = MyMalloc(length * sizeof(size_t));
 #endif
 
@@ -18,11 +18,11 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 		setRed();
 		log_string("Memory allocation failed\n");
 	}
-#ifdef frdm_debug
+#if defined frdm_debug || frdm_release
 	uint8_t* input= (uint8_t*)malloc(length * sizeof(uint8_t));
 #endif
 
-#ifdef pc_debug
+#if defined pc_debug || pc_release
 	uint8_t* input= (uint8_t*)MyMalloc(length * sizeof(uint8_t));
 #endif
 
@@ -34,9 +34,9 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 	}
 	//CHECK DATA TYPES
 
-	uint8_t *temp = gen_pattern(input, length, seed);
+	gen_pattern(input, length, seed);
 
-	if( temp == NULL)
+	if( input == NULL)
 	{
 		offLED();
 		setRed();
@@ -45,11 +45,11 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 
 	for (int i = 0; i < length; i++)
 	{
-		if (loc[i] != (uint32_t)temp[i])
+		if (loc[i] != (uint32_t)input[i])
 		{
 			offLED();
 			setRed();
-			list[i] = &loc[i];
+			list[i] = (uint32_t)&loc[i];
 		}
 			else
 			list[i] = 0;

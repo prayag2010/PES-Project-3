@@ -5,6 +5,8 @@
  *      Author: rahul
  */
 #include "ledControl.h"
+#include "../board/peripherals.h"
+#include "../board/pin_mux.h"
 
 void init_pins()
 {

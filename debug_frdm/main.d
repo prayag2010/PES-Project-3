@@ -12,7 +12,9 @@ debug_frdm/main.o debug_frdm/main.d: source_common/main.c \
  source_common/../common_includes/../frdm_includes/../board/../drivers/fsl_common.h \
  source_common/../common_includes/../frdm_includes/../board/../drivers/fsl_gpio.h \
  source_common/../common_includes/loggerFunctions.h \
- source_common/../frdm_includes/ledControl.h
+ source_common/../frdm_includes/ledControl.h \
+ source_common/../uCUnit/uCUnit.h source_common/../uCUnit/System.h \
+ source_common/../frdm_includes/unitTest.h
 
 source_common/../common_includes/MyMalloc.h:
 
@@ -51,3 +53,9 @@ source_common/../common_includes/../frdm_includes/../board/../drivers/fsl_gpio.h
 source_common/../common_includes/loggerFunctions.h:
 
 source_common/../frdm_includes/ledControl.h:
+
+source_common/../uCUnit/uCUnit.h:
+
+source_common/../uCUnit/System.h:
+
+source_common/../frdm_includes/unitTest.h:

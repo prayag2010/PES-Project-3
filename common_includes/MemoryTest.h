@@ -16,11 +16,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#ifdef frdm_debug
+#if defined frdm_debug || frdm_release
 	#include "../frdm_includes/ledControl.h"
 #endif
 
-#ifdef pc_debug
+#if defined pc_debug || pc_release
 	#include "../pc_includes/ledControl.h"
 #endif
 
@@ -55,7 +55,7 @@ uint32_t * allocate_words(size_t length);
  */
 void free_words(uint32_t * src);
 
-uint32_t * display_memory(uint32_t * loc, size_t length);
+uint8_t * display_memory(uint32_t * loc, size_t length);
 
 mem_status write_memory(uint32_t * loc, uint8_t value);
 
@@ -67,6 +67,6 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed);
 
 uint32_t *get_address(uint32_t * base_addr, uint32_t offset);
 
-uint8_t* gen_pattern(uint8_t* pattern, uint8_t length, uint8_t seed);
+void gen_pattern(uint8_t* pattern, uint8_t length, uint8_t seed);
 
 #endif
