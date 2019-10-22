@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.pemicro.debug.gdbjtag.pne.launchConfigurationType">
 <stringAttribute key="com.crt.ctrlcenter.OFSemuDetails" value="PEMicroA68DCE59"/>
-<booleanAttribute key="com.crt.ctrlcenter.saveState" value="true"/>
 <stringAttribute key="com.crt.ctrlcenter.serialNumber" value="USB1 - OpenSDA (A68DCE59)"/>
 <mapAttribute key="com.crt.ctrlcenter.symbolsGroupSettings"/>
 <intAttribute key="com.nxp.mcuxpresso.core.datamodels.ui.launchers.PELaunchConfigHandler.version" value="1"/>
@@ -106,8 +105,6 @@
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.ml.SPECIFY_IP" value="false"/>
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.ml.SPECIFY_NETWORK_CARD" value="false"/>
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.ml.STARTUP_USE_SWD" value="true"/>
-<stringAttribute key="com.pemicro.debug.gdbjtag.pne.ml.SWO_BAUDRATE_SWITCH_MULTILINK_VALUE" value="-1.000000"/>
-<stringAttribute key="com.pemicro.debug.gdbjtag.pne.ml.SWO_BAUDRATE_SWITCH_TARGET_VALUE" value="-1.000000"/>
 <stringAttribute key="com.pemicro.debug.gdbjtag.pne.otherRunCommands" value=""/>
 <intAttribute key="com.pemicro.debug.gdbjtag.pne.partitionParam" value="0"/>
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.preserveMemory0" value="false"/>
@@ -137,6 +134,8 @@
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.sda.SPECIFY_IP" value="false"/>
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.sda.SPECIFY_NETWORK_CARD" value="false"/>
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.sda.STARTUP_USE_SWD" value="true"/>
+<stringAttribute key="com.pemicro.debug.gdbjtag.pne.sda.SWO_BAUDRATE_SWITCH_MULTILINK_VALUE" value="-1.000000"/>
+<stringAttribute key="com.pemicro.debug.gdbjtag.pne.sda.SWO_BAUDRATE_SWITCH_TARGET_VALUE" value="-1.000000"/>
 <intAttribute key="com.pemicro.debug.gdbjtag.pne.selectedCoreNumber" value="1"/>
 <intAttribute key="com.pemicro.debug.gdbjtag.pne.serverPortNumber" value="7224"/>
 <booleanAttribute key="com.pemicro.debug.gdbjtag.pne.trc_eth.ALWAYS_ERASE" value="false"/>
@@ -197,7 +196,7 @@
 <booleanAttribute key="org.eclipse.cdt.dsf.gdb.NON_STOP" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.dsf.gdb.UPDATE_THREADLIST_ON_SUSPEND" value="false"/>
 <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value=".mcuxpressoide_packages_support/MKL25Z128xxx4_support/Flash/FTFA_1K.cfx"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="debug_frdm/outputFRDM.axf"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="PES Project 3"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.crt.advproject.toolchain.exe.debug.123099575"/>

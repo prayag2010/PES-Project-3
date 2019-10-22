@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../frdm_includes/MyMalloc.h"
-#include "../frdm_includes/MemoryTest.h"
-#include "../frdm_includes/loggerFunctions.h"
-#include "../frdm_includes/ledControl.h"
+#include "../common_includes/MyMalloc.h"
+#include "../common_includes/MemoryTest.h"
+#include "../common_includes/loggerFunctions.h"
+#ifdef frdm_debug
+	#include "../frdm_includes/ledControl.h"
+#endif
+#ifdef pc_debug
+	#include "../pc_includes/ledControl.h"
+#endif
 enum mem_status;
 //struct block *freeList=(void*)memory;
 
@@ -11,12 +16,14 @@ bool loggerEnable = false;
 size_t myBlockSize = 16;
 int8_t seedValue = 7;
 uint32_t blockOffset = 2;
-uint8_t writeVal = 0xFFEE;
+uint32_t writeVal = 0xFFEE;
 
 int main()
 {
 
+#ifdef frdm_debug
 	init_pins();
+#endif
 	log_enable();
 	offLED();
 	//FIX THIS FUNCTION, return null if not allocated
@@ -65,7 +72,7 @@ int main()
 	offsetAddr = get_address(myBlock, blockOffset);
 	if( invert_block(offsetAddr, sizeof(blockOffset))) //?
 	{
-
+		setRed();
 	}
 	log_string("Invert 4 bytes and display");
 //	printf("Invert 4 bytes and display\n");
@@ -80,7 +87,7 @@ int main()
 	offsetAddr = get_address(myBlock, blockOffset);
 	if( invert_block(offsetAddr, sizeof(blockOffset)))
 	{
-
+		setRed();
 	}
 	log_string("Invert 4 bytes again and display");
 //	printf("Invert 4 bytes again and display\n");

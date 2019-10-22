@@ -92,8 +92,19 @@ USER_OBJS_FRDM := \
  
 # List of object files for the PC  
 OBJS_PC := \
-  	./debug_pc/main.o
-
+  	./debug_pc/main.o \
+  	./debug_pc/ledControl.o \
+	./debug_pc/allocate_words.o \
+	./debug_pc/display_memory.o \
+	./debug_pc/free_words.o \
+	./debug_pc/gen_pattern.o \
+	./debug_pc/invert_block.o \
+	./debug_pc/malloc.o \
+	./debug_pc/verify_pattern.o \
+	./debug_pc/write_memory.o \
+	./debug_pc/write_pattern.o \
+	./debug_pc/get_address.o \
+	./debug_pc/loggerFunctions.o
 ###################################################
 # List of dependency files for KL25Z
 C_DEPS_FRDM = \
@@ -110,6 +121,23 @@ C_DEPS_PC = \
 # List of source files for PC
 C_SRC_PC = \
  ./source_common/main.c 
+  
+###################################################
+
+# List of common source files
+C_SRC_COMMON = \
+ ./common_includes/allocate_words.c \
+ ./common_includes/display_memory.c \
+ ./common_includes/free_words.c \
+ ./common_includes/gen_pattern.c \
+ ./common_includes/get_address.c \
+ ./common_includes/invert_block.c \
+ ./common_includes/loggerFunctions.c \
+ ./common_includes/malloc.c \
+ ./common_includes/verify_pattern.c \
+ ./common_includes/write_memory.c \
+ ./common_includes/write_pattern.c \
+  
   
 ###################################################
 
@@ -143,7 +171,7 @@ endif
 CC_OPTIONS_FRDM := -c -std=gnu99 -O0 -g -ffunction-sections -fdata-sections -fno-builtin -mcpu=cortex-m0plus -mthumb -DCPU_MKL25Z128VLK4 -D__USE_CMSIS -I"CMSIS" -I"source" 
 
 # Compiler options for PC
-CC_OPTIONS_PC := -Wall -Werror
+CC_OPTIONS_PC :=
 
 ###################################################
 # Linker Options for KL25Z
@@ -203,16 +231,6 @@ pc_debug : $(OBJS_PC)
 	@echo "*** finished building ***"
 	@echo ' '
 
-# Link PC object files to create executable (release)
-.PHONY: pc_release
-pc_release : $(OBJS_PC) 
-	@echo 'Attempting to link PC object files'
-	$(LL_PC) $(OBJS_PC) $(LL_PC_OPTIONS)
-	@echo 'PC source files $< linked'
-	@echo 'Executable created'
-	@echo "*** finished building ***"
-	@echo ' '
-
 ###################################################
 
 # Rule to build the files in the common source folder for FRDM
@@ -233,24 +251,17 @@ endif
 ifeq ($(MAKECMDGOALS),pc_debug)
 	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
 endif
-ifeq ($(MAKECMDGOALS),pc_release)
-	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
-endif
 	@echo 'Finished building: $<'
 	@echo ' '
 #
-##	Rule to build the files in the includes folder for PC
-#./debug_pc/%.o: ./pc_includes/%.c 
-#	@echo 'Building file: $<'
-#ifeq ($(MAKECMDGOALS),pc_debug)
-#	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
-#endif
-#ifeq ($(MAKECMDGOALS),pc_release)
-#	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_RELEASE_MACRO) -c "$<" -o "$@"
-#endif
-#	@echo 'Finished building: $<'
-#	@echo ' '
-
+#	Rule to build the files in the includes folder for PC
+./debug_pc/%.o: ./pc_includes/%.c 
+	@echo 'Building file: $<'
+ifeq ($(MAKECMDGOALS),pc_debug)
+	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
+endif
+	@echo 'Finished building: $<'
+	@echo ' '
 
 ###################################################
 
@@ -295,8 +306,21 @@ endif
 ifeq ($(MAKECMDGOALS),frdm_debug)
 	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 endif
-ifeq ($(MAKECMDGOALS),frdm_release)
-	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_RELEASE_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' ' 
+	
+./debug_frdm/frdm_includes/%.o: ./common_includes/%.c
+	@echo 'Building file: $<'
+ifeq ($(MAKECMDGOALS),frdm_debug)
+	$(CC_FRDM) $(CC_OPTIONS_FRDM) -D epoch=$(EPOCH) -D $(FRDM_DEBUG_MACRO) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 endif
 	@echo 'Finished building: $<'
 	@echo ' ' 
+
+./debug_pc/%.o: ./common_includes/%.c
+	@echo 'Building file: $<'
+ifeq ($(MAKECMDGOALS),pc_debug)
+	$(CC_PC) $(CC_OPTIONS_PC) -D $(PC_DEBUG_MACRO) -c "$<" -o "$@"
+endif
+	@echo 'Finished building: $<'
+	@echo ' '

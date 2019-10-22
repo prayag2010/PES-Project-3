@@ -1,7 +1,7 @@
 debug_frdm/main.o debug_frdm/main.d: source_common/main.c \
- source_common/../frdm_includes/MyMalloc.h \
- source_common/../frdm_includes/MemoryTest.h \
- source_common/../frdm_includes/loggerFunctions.h \
+ source_common/../common_includes/MyMalloc.h \
+ source_common/../common_includes/MemoryTest.h \
+ source_common/../common_includes/loggerFunctions.h \
  source_common/../frdm_includes/ledControl.h \
  source_common/../frdm_includes/../board/board.h \
  source_common/../frdm_includes/../board/clock_config.h \
@@ -13,11 +13,11 @@ debug_frdm/main.o debug_frdm/main.d: source_common/main.c \
  source_common/../frdm_includes/../board/../drivers/fsl_common.h \
  source_common/../frdm_includes/../board/../drivers/fsl_gpio.h
 
-source_common/../frdm_includes/MyMalloc.h:
+source_common/../common_includes/MyMalloc.h:
 
-source_common/../frdm_includes/MemoryTest.h:
+source_common/../common_includes/MemoryTest.h:
 
-source_common/../frdm_includes/loggerFunctions.h:
+source_common/../common_includes/loggerFunctions.h:
 
 source_common/../frdm_includes/ledControl.h:
 

@@ -1,10 +1,10 @@
 debug_frdm/frdm_includes/allocate_words.o \
  debug_frdm/frdm_includes/allocate_words.d: \
- frdm_includes/allocate_words.c frdm_includes/MemoryTest.h \
- frdm_includes/MyMalloc.h frdm_includes/loggerFunctions.h
+ common_includes/allocate_words.c common_includes/MemoryTest.h \
+ common_includes/MyMalloc.h common_includes/loggerFunctions.h
 
-frdm_includes/MemoryTest.h:
+common_includes/MemoryTest.h:
 
-frdm_includes/MyMalloc.h:
+common_includes/MyMalloc.h:
 
-frdm_includes/loggerFunctions.h:
+common_includes/loggerFunctions.h:
