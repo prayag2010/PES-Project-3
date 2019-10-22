@@ -16,13 +16,22 @@
 #include <stddef.h>
 #include <stdint.h>
 
-enum mem_statusop
+#ifdef frdm_debug
+	#include "../frdm_includes/ledControl.h"
+#endif
+
+#ifdef pc_debug
+	#include "../pc_includes/ledControl.h"
+#endif
+
+typedef enum mem_statusop
 {
 	SUCCESS = 0, // no error
-	FAILED // failure case
-};
+	FAILED, // failure case
+	WARNING
+}mem_status;
 
-typedef enum mem_statusop mem_status;
+// mem_statusop mem_status;
 
 /*
  * @brief Allocate a block of memory for the test

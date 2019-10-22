@@ -7,7 +7,7 @@ struct block *freeMyList = (void*)memory;
 
 void initialize()
 {
-	freeMyList->size=(4*32)-sizeof(struct block);
+	freeMyList->size=(4*1024)-sizeof(struct block);
 	freeMyList->free=1;
 	freeMyList->next=NULL;
 }
@@ -33,7 +33,7 @@ void *MyMalloc(size_t noOfBytes)
 	if(!(freeMyList->size))
 	{
 		initialize();
-		printf("Memory initialized\n");
+		//printf("Memory initialized\n");
 	}
 
 	curr=freeMyList;
@@ -42,28 +42,28 @@ void *MyMalloc(size_t noOfBytes)
 	{
 		prev=curr;
 		curr=curr->next;
-		printf("One block checked\n");
+		//printf("One block checked\n");
 	}
 
 	if((curr->size)==noOfBytes)
 	{
 		curr->free=0;
 		result=(void*)(++curr);
-		printf("Exact fitting block allocated\n");
+		//printf("Exact fitting block allocated\n");
 		return result;
 	}
 	 else if((curr->size)>(noOfBytes+sizeof(struct block)))
 	 {
 		  split(curr,noOfBytes);
 		  result=(void*)(++curr);
-		  printf("%p\n",result);
-		  printf("Fitting block allocated with a split\n");
+		  //printf("%p\n",result);
+		  //printf("Fitting block allocated with a split\n");
 		  return result;
 	 }
 	else
 	{
 		result=NULL;
-		printf("No sufficient memory to allocate\n");
+		//printf("No sufficient memory to allocate\n");
 		return result;
 	}
 }
@@ -94,5 +94,6 @@ void MyFree(void* ptr)
 		curr->free=1;
 		merge();
 	}
-	else printf("Please provide a valid pointer allocated by MyMalloc\n");
+	else
+		printf("Please provide a valid pointer allocated by MyMalloc\n");
 }

@@ -3,10 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdint.h>
 
-extern unsigned __user_heap_extend(int , void **base, unsigned requested_size);
-
-static char memory[4*32];
+char memory[4*1024];
 char *mem;
 //__attribute__ ((section(".memory"))) extern char memory[4*1024] ;
 

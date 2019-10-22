@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../common_includes/MyMalloc.h"
 #include "../common_includes/MemoryTest.h"
 #include "../common_includes/loggerFunctions.h"
+
 #ifdef frdm_debug
 	#include "../frdm_includes/ledControl.h"
 #endif
+
 #ifdef pc_debug
 	#include "../pc_includes/ledControl.h"
 #endif
+
 enum mem_status;
 //struct block *freeList=(void*)memory;
 
@@ -70,7 +74,7 @@ int main()
 
 
 	offsetAddr = get_address(myBlock, blockOffset);
-	if( invert_block(offsetAddr, sizeof(blockOffset))) //?
+	if( invert_block(offsetAddr, sizeof(blockOffset)))
 	{
 		setRed();
 	}

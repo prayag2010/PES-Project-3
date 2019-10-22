@@ -6,5 +6,9 @@ mem_status write_memory(uint32_t * loc, uint8_t value)
 		if (loc != NULL)
 			return SUCCESS;
 		else
+		{
+			offLED();
+			setRed();
 			return FAILED;
+		}
 }

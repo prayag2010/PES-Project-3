@@ -6,8 +6,12 @@ mem_status invert_block(uint32_t * loc, size_t length)
 	{
 		*loc = *loc ^ (0x000000FF << (i * 8));
 	}
-	if (loc != NULL)
-		return SUCCESS;
-	else
+	if (loc == NULL)
+	{
+		offLED();
+		setRed();
 		return FAILED;
+	}
+	else
+		return SUCCESS;
 }
