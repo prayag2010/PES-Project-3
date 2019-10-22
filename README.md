@@ -48,7 +48,8 @@ This folder contains the object files, which are created after the compilation o
 This folder contains source files which are common to both the PC and FRDM board such as Memory Test functions, Logger functions, Malloc functions. These files will be compiled for both the platforms.  
 
 **Folder uCUnit**  
-This folder contains functions of uCunit, which is a unit test framework. This unit test framework is used to create and monitor test cases for the program. 
+This folder contains functions of uCunit, which is a unit test framework. This unit test framework is used to create and monitor test cases for the program.   
+The file `unitTestResults.out` has the output of the unit tests captured in it.
 
 ---
 
@@ -76,5 +77,6 @@ Also, while making the code modular we ran into the issue of multiple definition
 
 **References**  
 http://tharikasblogs.blogspot.com/p/how-to-write-your-own-malloc-and-free.html- the custom malloc functions were taken from this website
+https://mcuoneclipse.com/2018/08/26/tutorial-%CE%BCcunit-a-unit-test-framework-for-microcontrollers/ - the reference and tutorial for the uCUnit testing framework
 
 
