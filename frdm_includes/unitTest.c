@@ -7,6 +7,7 @@
 #include "../uCUnit/uCUnit.h"
 #include <stdint.h>
 #include "../common_includes/MemoryTest.h"
+#include "../frdm_includes/ledControl.h"
 #include "unitTest.h"
 
 
@@ -52,6 +53,9 @@ void unitTest(void)
 	UCUNIT_CheckIs16Bit(temp);
 	UCUNIT_WriteString("Checking if a variable is 32 bit\n");
 	UCUNIT_CheckIs32Bit(temp);
+
+	offLED();
+	setGreen();
 
 	UCUNIT_WriteSummary();
 	UCUNIT_Shutdown();
