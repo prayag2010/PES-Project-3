@@ -27,7 +27,7 @@ uint32_t writeVal = 0xFFEE;
 int main()
 {
 
-#ifdef frdm_debug
+#if defined frdm_debug || defined frdm_release
 	init_pins();
 #endif
 #if defined frdm_debug || defined pc_debug
@@ -106,8 +106,15 @@ int main()
 	log_string("Verify and display");
 	//	printf("Verify and display\n");
 	log_data(temp, myBlockSize);
+
+	free_words(myBlock);
+	free_words(temp);
+
+
 	offLED();
 	setGreen();
+
+
 
 #ifdef frdm_debug
 	unitTest();

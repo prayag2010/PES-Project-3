@@ -173,7 +173,7 @@ endif
 CC_OPTIONS_FRDM := -c -std=gnu99 -O0 -g -ffunction-sections -fdata-sections -fno-builtin -mcpu=cortex-m0plus -mthumb -DCPU_MKL25Z128VLK4 -D__USE_CMSIS -I"CMSIS" -I"source" 
 
 # Compiler options for PC
-CC_OPTIONS_PC :=
+CC_OPTIONS_PC := -Wall -Werror
 
 ###################################################
 # Linker Options for KL25Z
@@ -226,6 +226,15 @@ $(EXE_FRDM): $(OBJS_FRDM) $(USER_OBJS_FRDM) linkerfileFRDM.ld
 # Link PC object files to create executable (debug)
 .PHONY: pc_debug
 pc_debug : $(OBJS_PC) 
+	@echo 'Attempting to link PC object files'
+	$(LL_PC) $(OBJS_PC) $(LL_PC_OPTIONS)
+	@echo 'PC source files $< linked'
+	@echo 'Executable created'
+	@echo "*** finished building ***"
+	@echo ' '
+	
+.PHONY: pc_release
+pc_release : $(OBJS_PC) 
 	@echo 'Attempting to link PC object files'
 	$(LL_PC) $(OBJS_PC) $(LL_PC_OPTIONS)
 	@echo 'PC source files $< linked'
