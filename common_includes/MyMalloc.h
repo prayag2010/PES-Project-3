@@ -10,6 +10,7 @@
  * @verison 1.0
  */
  
+/* REFERENCE */
 /*http://tharikasblogs.blogspot.com/p/how-to-write-your-own-malloc-and-free.html- the custom malloc functions were taken from this website */
  
 #ifndef _MYMALLOC_H
