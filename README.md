@@ -63,6 +63,8 @@ will be available.
 - *pc_release*: This target builds the output for the PC. The output LEDs will print on console according to the memory tests. 
 - *pc-debug*:  This target builds the output for the PC. The output LEDs will print according to the memory tests and a log output is displayed.  
 
+**The PC executable (outputPC.exe) is located in the debug_pc folder, and the ARM executable (outputFRDM.axf) is located in the root of the directory**     
+
 Always run the 'make clean' command before rebuilding other targets.  
 Executing the above command results in .exe file which can be executed on the pc target by right-clicking and choosing terminal and .axf file which can be executed on FRDM board by clicking the debug option.  
 This project has the following requirements, that are fulfilled using the aforementioned command:  
