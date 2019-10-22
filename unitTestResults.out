@@ -1,0 +1,32 @@
+
+======================================
+Unit test on pointers and values
+======================================
+Checking if a allocated pointer is NULL
+frdm_includes/unitTest.c:20: failed:IsNotNull(testBlock)
+Checking if a allocated pointer is NULL, after malloc
+frdm_includes/unitTest.c:24: passed:IsNotNull(testBlock)
+Checking if a value of generated pattern is 0 (0 = not changed)
+frdm_includes/unitTest.c:29: passed:IsEqual(verifyTestBlock[1],0)
+Checking if first value of pattern is larger than seed
+frdm_includes/unitTest.c:33: failed:IsInRange(testBlock[1],0,5)
+Verifying value after manually changing it
+frdm_includes/unitTest.c:36: failed:IsEqual(verifyTestBlock[1],0)
+Resetting to original values and checking again
+frdm_includes/unitTest.c:41: passed:IsEqual(verifyTestBlock[1],0)
+Checking if the value of an offset is 0
+frdm_includes/unitTest.c:46: failed:IsEqual(offsetAddrTest,0)
+Checking if a variable is 8 bit
+frdm_includes/unitTest.c:50: failed:Is8Bit(temp)
+Checking if a variable is 16 bit
+frdm_includes/unitTest.c:52: failed:Is16Bit(temp)
+Checking if a variable is 32 bit
+frdm_includes/unitTest.c:54: passed:Is32Bit(temp)
+
+**************************************
+Testcases: failed: 0
+           passed: 0
+Checks:    failed: 6
+           passed: 4
+**************************************
+System shutdown.

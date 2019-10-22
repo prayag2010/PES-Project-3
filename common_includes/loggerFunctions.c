@@ -10,28 +10,29 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//Enable the logger
+
 void log_enable(void)
 {
-	loggerEnable = true;
+	loggerEnable = true;	//Enable the logger
 }
 
-//Disable the logger
+
 void log_disable(void)
 {
-	loggerEnable = false;
+	loggerEnable = false;	//Disable the logger
 }
 
-//Give status of the logger
+
 bool log_status(void)
 {
-	return(loggerEnable);
+	return(loggerEnable);	//Give status of the logger
 }
 
 
-//Log data at a certain address till length
+
 void log_data(uint32_t *inAddress, size_t length)
 {
+	//Log data at a certain address till length
 	if(loggerEnable){
 		for(size_t i = 0; i < length; i++){
 			printf("%p: ", inAddress + i);
@@ -41,16 +42,16 @@ void log_data(uint32_t *inAddress, size_t length)
 	}
 }
 
-//Print a string
+
 void log_string(char *inString)
 {
 	if(loggerEnable)
-		printf("%s\n", inString);
+		printf("%s\n", inString);	//Print a string
 }
 
-//Print an integer
+
 void log_integer(uint32_t *inAddress)
 {
 	if(loggerEnable)
-		printf("%d\n", *inAddress);
+		printf("%d\n", *inAddress);	//Print an integer
 }

@@ -23,7 +23,7 @@ size_t myBlockSize = 16;
 int8_t seedValue = 7;
 uint32_t blockOffset = 2;
 uint32_t writeVal = 0xFFEE;
-uint8_t *readDisplay = NULL;
+//uint8_t *readDisplay = NULL;
 int main()
 {
 
@@ -43,13 +43,13 @@ int main()
 	log_string("Write pattern and display");
 	//	printf("Write pattern and display\n");
 	write_pattern(myBlock, myBlockSize, seedValue);
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(myBlock, 16);
 
 	log_string("verify pattern and display");
 	//	printf("verify pattern and display\n");
 	uint32_t *temp = verify_pattern(myBlock, myBlockSize, seedValue);
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(temp, 16);
 
 
@@ -61,26 +61,26 @@ int main()
 	}
 	log_string("Write 0xffee and display");
 	//	printf("Write 0xffee and display\n");
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(myBlock, myBlockSize);
 
 	log_string("Verify and display");
 	//	printf("Verify and display\n");
 	temp = verify_pattern(myBlock, myBlockSize, seedValue);
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(temp, myBlockSize);
 
 
 	log_string("Write pattern again and display");
 	//	printf("Write pattern again and display\n");
 	write_pattern(myBlock, myBlockSize, seedValue);
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(myBlock, myBlockSize);
 
 	log_string("Verify and display");
 	//	printf("Verify and display\n");
 	temp = verify_pattern(myBlock, myBlockSize, seedValue);
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(temp, 16);
 
 
@@ -91,13 +91,13 @@ int main()
 	}
 	log_string("Invert 4 bytes and display");
 	//	printf("Invert 4 bytes and display\n");
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(myBlock, myBlockSize);
 
 	log_string("Verify and display");
 	//	printf("Verify and display\n");
 	temp = verify_pattern(myBlock, myBlockSize, seedValue);
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(temp, myBlockSize);
 
 
@@ -108,13 +108,13 @@ int main()
 	}
 	log_string("Invert 4 bytes again and display");
 	//	printf("Invert 4 bytes again and display\n");
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(myBlock, myBlockSize);
 
 	temp = verify_pattern(myBlock, myBlockSize, seedValue);
 	log_string("Verify and display");
 	//	printf("Verify and display\n");
-	readDisplay = display_memory(myBlock, myBlockSize);
+//	readDisplay = display_memory(myBlock, myBlockSize);
 	log_data(temp, myBlockSize);
 
 	free_words(myBlock);
